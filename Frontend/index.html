@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AccessDesk | Customer Directory</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header class="topbar">
+        <div class="brand"><span class="brand-mark">A</span><span>AccessDesk</span></div>
+        <span class="crumb">Customer Directory</span>
+    </header>
+
+    <main class="layout">
+        <section class="panel controls" aria-labelledby="req-title">
+            <h2 id="req-title">New request</h2>
+
+            <label for="role">Demo role / API key</label>
+            <select id="role">
+                <option value="guest">Guest</option>
+                <option value="student" selected>Student</option>
+                <option value="teacher">Teacher</option>
+                <option value="admin">Admin</option>
+            </select>
+
+            <label for="rows">Requested rows</label>
+            <input type="number" id="rows" min="1" step="1" value="10">
+
+            <label for="search">Search customer</label>
+            <input type="text" id="search" placeholder="e.g., Ali" maxlength="100" autocomplete="off">
+
+            <div class="actions">
+                <button type="button" id="btn-load" class="btn primary">Load customers</button>
+                <button type="button" id="btn-search" class="btn">Search customers</button>
+                <button type="button" id="btn-usage" class="btn ghost" disabled>View usage (admin)</button>
+            </div>
+            <p class="hint">Search always returns up to the role's maximum, whatever the requested rows say.
+                Every approved request costs one credit.</p>
+        </section>
+
+        <section class="results">
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-label">Active role</span>
+                    <span id="badge" class="badge" data-role="student">Student</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Row allowance</span>
+                    <span id="allowance" class="stat-value">&mdash;</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Credits left</span>
+                    <span id="credits" class="stat-value">&mdash;</span>
+                </div>
+            </div>
+
+            <div id="status" class="status" role="status" aria-live="polite" hidden></div>
+
+            <div class="panel">
+                <div class="panel-head">
+                    <h2>Customer results</h2>
+                    <span id="count" class="count"></span>
+                </div>
+                <div class="table-wrap">
+                    <table id="table" hidden>
+                        <thead></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <p id="empty" class="empty">Pick a role and load customers to see results here.</p>
+            </div>
+
+            <div id="usage-panel" class="panel" hidden>
+                <div class="panel-head">
+                    <h2>Credit usage by role</h2>
+                </div>
+                <div class="table-wrap">
+                    <table id="usage-table">
+                        <thead>
+                            <tr>
+                                <th>Role</th>
+                                <th>Max rows</th>
+                                <th>Used</th>
+                                <th>Left</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-head">
+                    <h2>Request log</h2>
+                </div>
+                <ol id="log" class="log">
+                    <li class="none">No requests yet.</li>
+                </ol>
+            </div>
+        </section>
+    </main>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

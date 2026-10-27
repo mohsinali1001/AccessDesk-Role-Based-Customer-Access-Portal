@@ -1,0 +1,24 @@
+{
+  "name": "accessdesk-backend",
+  "version": "1.0.0",
+  "description": "AccessDesk role-based customer access API",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon server.js",
+    "serve": "node server.js",
+    "test": "node tests/verify.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.6",
+    "express": "^5.2.1",
+    "mysql2": "^3.24.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
